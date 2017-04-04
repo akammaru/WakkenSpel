@@ -7,22 +7,27 @@ import java.awt.*;
  * Created by Bas_Horselenberg on 16-3-2017.
  * this class creates a complete dice.
  */
-public class Dice extends JPanel {
+public class DicePrint extends JPanel {
+    //values for displacing the dots on each induvidual dice.
     private int top = 15;
     private int mid = 61;
     private int bot = 109;
-    private int randIntDice;
+
+    //variables to store the number roled for passing forwards later.
+    public int diceRoll;
 
     /**
      * setting background color of dice to white.
+     * setting the diceRoll to a random number for display of the correct dice and use later for other methods.
      */
-    public Dice(int diceInt) {
-        this.randIntDice = diceInt;
+    public DicePrint(int diceRoll) {
         setBackground(Color.white);
+        this.diceRoll = diceRoll;
     }
 
     /**
      * stetting the max size of a single dice 1 px bigger than the dice its self.
+     *
      * @return max size of a single dice.
      */
     @Override
@@ -32,6 +37,7 @@ public class Dice extends JPanel {
 
     /**
      * Draws the border of the dice and adds the dots comming from a random number generator.
+     *
      * @param g default paint component.
      */
     @Override
@@ -39,11 +45,11 @@ public class Dice extends JPanel {
         super.paintComponent(g);
 
         Graphics2D g2d = (Graphics2D) g.create();
-        g2d.setColor(Color.GRAY);
+        g2d.setColor(Color.black);
         g2d.drawRoundRect(0, 0, 150, 150, 38, 38);
 
 
-        switch (randIntDice) {
+        switch (diceRoll) {
             case 1:
                 g2d.fillOval(mid, mid, 25, 25);
                 break;
@@ -99,4 +105,6 @@ public class Dice extends JPanel {
 //        g2d.fillOval(bot, mid, 25, 25);
 //        g2d.fillOval(bot, bot, 25, 25);
     }
+
+
 }

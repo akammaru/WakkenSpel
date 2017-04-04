@@ -8,21 +8,35 @@ import java.awt.*;
  */
 public class MainPannel extends JFrame {
 
-    public MainPannel()  {
+    public MainPannel() {
         super("Wakken Spel");
         JFrame frame = new JFrame();
-        JPanel panel = new JPanel();
-
+        frame.setTitle("Wakken Spel");
+        JPanel dicePanel = new JPanel();
+        JPanel inputPanel = new JPanel();
+        JPanel outputPanel = new JPanel();
+        MainHandler processing = new MainHandler();
 
         // disable layout manager.
-        setLayout(null);
+        frame.setLayout(null);
 
-        // adding a dice to the panel.
-        panel.add( new DicePanel(7));
-        frame.add(panel);
+        // adding dice panel.
+        dicePanel.add(new DicePanel(12));
+        frame.add(dicePanel);
+        dicePanel.setBounds(5, 5, 1006, 360);
+
+        // adding user input panel.
+        inputPanel.add(new UserInput());
+        frame.add(inputPanel);
+        inputPanel.setBounds(5, 370, 1006, 35);
+
+        // adding Output panel.
+        outputPanel.add(new Output());
+        frame.add(outputPanel);
+        outputPanel.setBounds(508, 410, 503, 390);
 
         // changing background color to gray.
-        frame.setBackground(Color.green);
+        frame.getContentPane().setBackground(Color.green);
         // setting width and hight of the screen.
         frame.setSize(1200, 800);
         // make sure the programs quits properly when closed.
